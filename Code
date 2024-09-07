@@ -1,0 +1,38 @@
+# Initialize the original dictionary where the keys are student names
+# and the values are lists of subjects they are enrolled in.
+records = {
+    'John': ['Computer Science', 'English', 'Chemistry'],
+    'Jennifer': ['Math', 'English', 'Physics'],
+    'April': ['Math', 'History', 'Accounting']
+}
+# Print the initial dictionary
+print(f'The initial dictionary: {records}')
+
+# Define a function to invert the dictionary
+def new_dict(records):
+    # Initialize an empty dictionary to store the inverted data
+    reversed_dict = {}
+    
+    # Loop through the original dictionary
+    # student refers to the key (student name) and subjects refers to the list of subjects (values)
+    for student, subjects in records.items():
+        # Loop through each subject in the student's list of subjects
+        for subject in subjects:
+            # Check if the subject is already a key in reversed_dict
+            if subject not in reversed_dict:
+                # If not, create a new entry with the subject as the key and the student in a list as the value
+                reversed_dict[subject] = [student]
+            # If the subject already exists as a key and the list has fewer than 3 students
+            elif len(reversed_dict[subject]) < 3:
+                # Add the student to the list of students for that subject
+                reversed_dict[subject].append(student)
+    
+    # Return the newly created inverted dictionary
+    return reversed_dict
+
+# Call the function and assign the result to a variable
+Inverted_dictionary = new_dict(records)
+
+# Print the inverted dictionary
+print(f"\nHere is the New Inverted Dictionary: {Inverted_dictionary}")
+print('\n')
